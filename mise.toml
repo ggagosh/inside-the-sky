@@ -1,0 +1,33 @@
+[tools]
+godot = "4.7.2-stable"
+uv = "latest"
+"pipx:gdtoolkit" = "4.5.0" # gdformat + gdlint
+
+[tasks.edit]
+description = "Open the project in the Godot editor"
+run = "godot --path game --editor"
+
+[tasks.play]
+description = "Run the game"
+run = "godot --path game"
+
+[tasks.import]
+description = "Import assets and refresh Godot's caches (needed before headless runs)"
+run = "godot --headless --path game --import"
+
+[tasks.test]
+description = "Run all tests headless"
+depends = ["import"]
+run = "godot --headless --path game --script res://tests/run.gd"
+
+[tasks.lint]
+description = "Check GDScript formatting and lint rules"
+run = ["gdformat --check game", "gdlint game"]
+
+[tasks.fmt]
+description = "Format all GDScript"
+run = "gdformat game"
+
+[tasks.check]
+description = "Everything CI runs: lint + test"
+depends = ["lint", "test"]

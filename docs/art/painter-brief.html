@@ -1,0 +1,383 @@
+<title>Inside the Sky Art Brief</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=PT+Mono&display=swap">
+<style>
+/* Layout: an underground dossier. Dark band on top, then one reading column of sections on ash-grey paper. */
+:root {
+  --bg: #D6D5D0;        /* ash paper */
+  --panel: #E4E3DE;
+  --fg: #26272A;        /* soot */
+  --muted: #5B5C5E;
+  --line: #ADACA6;
+  --rust: #8A3B2C;      /* stamp red */
+  --gold: #9C7A22;      /* regime gold */
+  --band: #232428;
+  --band-fg: #E2E0D8;
+  --display: "Oswald", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --body: "PT Serif", Georgia, "Times New Roman", serif;
+  --mono: "PT Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1B1C1F; --panel: #24252A; --fg: #E2E0D8; --muted: #A2A19C; --line: #3C3D42;
+    --rust: #D07A62; --gold: #D2AF55; --band: #111215; --band-fg: #E2E0D8; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1B1C1F; --panel: #24252A; --fg: #E2E0D8; --muted: #A2A19C; --line: #3C3D42;
+  --rust: #D07A62; --gold: #D2AF55; --band: #111215; --band-fg: #E2E0D8; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font: 17px/1.6 var(--body); }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.band { background: var(--band); color: var(--band-fg); }
+header.band .wrap { padding-block: 56px 44px; display: grid; gap: 14px; }
+.eyebrow { font: 600 0.78rem/1.2 var(--display); letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+h1 { font: 700 clamp(2.6rem, 8vw, 4.6rem)/0.95 var(--display); text-transform: uppercase; letter-spacing: 0.01em; margin: 0; text-wrap: balance; }
+.lede { font-size: 1.1rem; max-width: 62ch; margin: 0; opacity: 0.92; }
+.note { font-size: 0.92rem; border-left: 3px solid var(--gold); padding-left: 12px; max-width: 62ch; margin: 6px 0 0; opacity: 0.85; }
+main .wrap { padding-block: 24px 80px; display: grid; gap: 56px; }
+section { display: grid; gap: 16px; min-width: 0; }
+h2 { font: 600 1.7rem/1.1 var(--display); text-transform: uppercase; letter-spacing: 0.02em; margin: 0; padding-top: 14px; border-top: 2px solid var(--fg); text-wrap: balance; }
+h3 { font: 600 1.2rem/1.2 var(--display); letter-spacing: 0.02em; margin: 0; }
+p { margin: 0; max-width: 66ch; }
+ul, ol { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.label { font: 600 0.72rem/1.2 var(--display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--rust); }
+.mono { font-family: var(--mono); font-size: 0.88em; }
+.start { padding: 20px; border: 2px solid var(--fg); background: var(--panel); }
+.start h2 { border-top: 0; padding-top: 0; }
+.three { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+.step { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.step ul { font-size: 0.95rem; }
+.rules { list-style: none; padding: 0; display: grid; gap: 12px; }
+.rules li { display: grid; gap: 4px; padding: 14px 16px; background: var(--panel); border: 1px solid var(--line); }
+.rules strong { font: 600 1.05rem/1.2 var(--display); letter-spacing: 0.02em; }
+figure { margin: 0; display: grid; gap: 8px; min-width: 0; }
+figure svg { width: 100%; height: auto; display: block; border: 1px solid var(--line); }
+figcaption { font-size: 0.9rem; color: var(--muted); }
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.sw { display: grid; gap: 4px; }
+.chip { height: 60px; border: 1px solid var(--line); }
+.sw b { font: 600 0.95rem/1.2 var(--display); letter-spacing: 0.02em; }
+.sw span { font-size: 0.85rem; color: var(--muted); line-height: 1.35; }
+.cast { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.card { display: grid; gap: 6px; align-content: start; padding: 16px; background: var(--panel); border: 1px solid var(--line); min-width: 0; }
+.card h3 { font-size: 1.3rem; }
+.card .from { font-size: 0.82rem; color: var(--muted); font-style: italic; }
+.card p { font-size: 0.95rem; }
+.tablebox { overflow-x: auto; border: 1px solid var(--line); background: var(--panel); }
+table { border-collapse: collapse; width: 100%; font-size: 0.93rem; min-width: 580px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+th { font: 600 0.75rem/1.2 var(--display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td.n { font: 700 1rem/1.3 var(--display); color: var(--muted); font-variant-numeric: tabular-nums; }
+.p0, .p1, .p2 { font: 700 0.72rem/1 var(--display); letter-spacing: 0.08em; padding: 3px 7px; white-space: nowrap; display: inline-block; }
+.p0 { background: var(--rust); color: var(--panel); }
+.p1 { border: 1.5px solid var(--rust); color: var(--rust); }
+.p2 { border: 1.5px solid var(--muted); color: var(--muted); }
+.steps { counter-reset: s; list-style: none; padding: 0; gap: 12px; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 2.2rem 1fr; gap: 10px; }
+.steps li::before { content: counter(s); font: 700 1.6rem/1 var(--display); color: var(--rust); }
+.avoid { padding: 14px 16px; border: 2px solid var(--rust); display: grid; gap: 6px; }
+.dont { display: grid; gap: 6px; padding: 14px 16px; background: var(--panel); border-left: 4px solid var(--rust); }
+</style>
+
+<header class="band">
+  <div class="wrap">
+    <div class="eyebrow">Art brief · for paintings on paper · working title</div>
+    <h1>Inside the Sky</h1>
+    <p class="lede">A strategy game for the computer. The player leads a secret underground in a grey city where radio towers keep everyone loyal. The game needs your paintings: a city map, portraits of the people, scenes from the story, and small icons. This page explains what to paint, at what size, and how to send it.</p>
+    <p class="note">Inspired by the Strugatsky brothers' novel <i>The Inhabited Island</i>. Names, places and designs are our own. Please don't use the 2008 film, existing illustrations of the book or earlier games based on it as references.</p>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+<section class="start">
+  <h2>Start here</h2>
+  <p>You don't need to know anything about games. Paint on paper, in your own style. For a start we need just <b>three small things</b>. When they arrive, we put them into the game and send you a screenshot, so you see how your work looks there before doing the rest.</p>
+  <div class="three">
+    <div class="step">
+      <span class="label">Test 1</span>
+      <h3>A portrait of Max</h3>
+      <ul>
+        <li>Head and shoulders, turned slightly to the side.</li>
+        <li>Plain, light background.</li>
+        <li>Frame size and eye line are shown under "Sizes on paper".</li>
+      </ul>
+    </div>
+    <div class="step">
+      <span class="label">Test 2</span>
+      <h3>A pencil sketch of the city</h3>
+      <ul>
+        <li>Rough pencil only, no painting yet.</li>
+        <li>The city seen from high above, with the 8 districts from the layout below.</li>
+        <li>We agree on the layout first, then you paint it properly.</li>
+      </ul>
+    </div>
+    <div class="step">
+      <span class="label">Test 3</span>
+      <h3>Three small icons</h3>
+      <ul>
+        <li>Money, a safe house, a tower.</li>
+        <li>Ink on white paper, each in a 5 × 5 cm square.</li>
+        <li>They'll be shown very small, so simple and bold is best.</li>
+      </ul>
+    </div>
+  </div>
+  <p>Then <b>scan or photograph</b> them as described under "Sending your work", and send the original files.</p>
+</section>
+
+<section>
+  <h2>The story in short</h2>
+  <p>A grey capital is ruled by the <b>Nameless Fathers</b>, whom nobody has ever seen. Their <b>Shield Towers</b> are officially missile defense. Really, twice a day, they send out a pulse that fills everyone with happy loyalty. During the pulse, the whole city freezes, faces turned up toward the towers. A few people, the <b>deviants</b>, don't feel the bliss. They feel terrible pain instead, and the secret police hunt them as traitors.</p>
+  <p>The player leads a small underground of deviants. <b>Max</b>, a stranger who arrived from somewhere far away, joins them. The pulse does nothing to him at all. Together they grow a secret network across the city, compete with a rival group that wants the towers for itself, and try to bring the towers down.</p>
+</section>
+
+<section>
+  <h2>The mood</h2>
+  <p>Dark, grey, cold and quiet. People are afraid and watch each other. Small moments of human warmth, like a café or a friend, matter because they are rare. Think of a city in the 1940s after a long war: damp concrete, rust, trams, long coats, peeling posters.</p>
+  <ol class="rules">
+    <li><strong>The sky glows.</strong> No sun, no moon, no stars. By day the whole sky is a pale, milky haze; at night it is a dark ceiling with no stars. Light comes from everywhere at once, so daylight has no strong shadows, only soft dark areas under things. At night, lamps and searchlights can throw hard local shadows.</li>
+    <li><strong>The far land curves up.</strong> People here believe they live on the inside of a ball, and their world looks like it: far-away land rises toward the top of the view and fades into the haze, as if the city sits at the bottom of a bowl. Show this at the top of the city map and in outdoor scenes.</li>
+    <li><strong>Towers are always in sight.</strong> Tall steel lattice towers, many shaped like a narrow waist (a hyperboloid), each with a ring on top. Every outdoor scene shows at least one.</li>
+    <li><strong>Gold belongs to the regime.</strong> Only towers, badges and the Fathers' emblem get the gold-yellow color. Everything else stays grey, brown and dull.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Paints and colors</h2>
+  <p>Use whatever you work best in: charcoal, pencil, ink wash, watercolor, gouache. A small, muted palette suits the game. These are suggestions in ordinary paint names.</p>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#E3E1D8"></div><b>Haze</b><span>White with a touch of raw umber. Day sky.</span></div>
+    <div class="sw"><div class="chip" style="background:#5E646B"></div><b>Slate</b><span>Payne's grey. Shadows, distance, night.</span></div>
+    <div class="sw"><div class="chip" style="background:#2A2A2C"></div><b>Soot</b><span>Ivory black or charcoal. Iron, coats, dark lines.</span></div>
+    <div class="sw"><div class="chip" style="background:#7A6E5E"></div><b>Mud</b><span>Raw umber. Walls, ground, wood.</span></div>
+    <div class="sw"><div class="chip" style="background:#8A4A33"></div><b>Rust</b><span>Burnt sienna. Bricks, old metal, blood.</span></div>
+    <div class="sw"><div class="chip" style="background:#C49A3A"></div><b>Regime gold</b><span>Yellow ochre. Towers and badges only.</span></div>
+  </div>
+  <div class="dont">
+    <span class="label">Important for scanning</span>
+    <p>Please <b>don't use metallic gold or silver paint, glitter or glossy gel pens.</b> They reflect light and come out as white or black blotches in a scan or photo. A plain yellow ochre reads as gold on screen.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Sizes on paper</h2>
+  <p>Before painting, draw the frame lightly in pencil. Paint about 1 cm <b>past</b> the frame on every side, so we can trim cleanly.</p>
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>What</th><th>Paper</th><th>Frame to draw</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><b>City map</b></td><td>A3, landscape</td><td class="mono">40 × 22.5 cm</td><td>The shape of a computer screen. Leave out street names and labels; the game adds them.</td></tr>
+        <tr><td><b>Story scenes</b></td><td>A4, landscape</td><td class="mono">25 × 14 cm</td><td>Same screen shape, smaller.</td></tr>
+        <tr><td><b>Portraits</b></td><td>A4, upright</td><td class="mono">15 × 20 cm</td><td>Eyes on the same line in every portrait (see the drawing). Plain, light background.</td></tr>
+        <tr><td><b>Icons</b></td><td>A4, white</td><td class="mono">5 × 5 cm each</td><td>Several per sheet, with at least 2 cm of empty paper between them.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <figure>
+    <svg viewBox="0 0 420 240" role="img" aria-label="Portrait frame: 15 by 20 centimeters, eyes on a fixed line about 40 percent from the top, painting continues past the frame edge.">
+      <rect x="0" y="0" width="420" height="240" fill="#E7E5DE"/>
+      <rect x="28" y="8" width="174" height="224" fill="#D3D0C6"/>
+      <rect x="40" y="20" width="150" height="200" fill="#DDDAD1" stroke="#2A2A2C" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <path d="M58,220 Q66,166 115,158 Q164,166 172,220 Z" fill="#5E646B"/>
+      <ellipse cx="115" cy="104" rx="32" ry="42" fill="#7A6E5E"/>
+      <line x1="40" y1="100" x2="190" y2="100" stroke="#8A3B2C" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <g font-family="PT Mono, monospace" font-size="12" fill="#2A2A2C">
+        <text x="205" y="30">frame 15 × 20 cm</text>
+        <text x="205" y="104">eyes on this line,</text>
+        <text x="205" y="120">8 cm from the top</text>
+        <text x="205" y="214">paint 1 cm past</text>
+        <text x="205" y="230">the frame edge</text>
+      </g>
+    </svg>
+    <figcaption>Portrait framing. Keeping the eyes at the same height in every portrait makes them line up neatly in the game.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>The city map</h2>
+  <p>The most important painting. The player looks at it all game long. Paint the capital <b>from high above at an angle</b>, like an old bird's-eye city view, as if seen from the top of a tower. At the top edge, the far land rises into the haze (rule 2). Below is the layout of districts. It's a plan, not a style: change shapes freely, but keep the 8 districts, the river and the bridges.</p>
+  <figure>
+    <svg viewBox="0 0 640 360" role="img" aria-label="District layout: haze at the top; Tower Hill, University, Government Quarter and Barracks above the river; Docks, Old Town, Factories and Rail Yards below it; two bridges.">
+      <rect x="0" y="0" width="640" height="360" fill="#E3E1D8"/>
+      <rect x="0" y="0" width="640" height="52" fill="#CFCCC2"/>
+      <path d="M0,198 C160,214 300,170 460,186 S600,190 640,178" stroke="#5E646B" stroke-width="20" fill="none"/>
+      <g fill="#C9C5BA" stroke="#5B5C5E" stroke-width="1.2">
+        <rect x="24" y="66" width="140" height="96" rx="10"/>
+        <rect x="178" y="66" width="140" height="96" rx="10"/>
+        <rect x="332" y="66" width="140" height="96" rx="10"/>
+        <rect x="486" y="66" width="130" height="96" rx="10"/>
+        <rect x="24" y="226" width="140" height="96" rx="10"/>
+        <rect x="178" y="226" width="140" height="96" rx="10"/>
+        <rect x="332" y="226" width="140" height="96" rx="10"/>
+        <rect x="486" y="226" width="130" height="96" rx="10"/>
+      </g>
+      <g fill="#7A6E5E">
+        <rect x="236" y="176" width="22" height="40"/>
+        <rect x="430" y="168" width="22" height="40"/>
+      </g>
+      <polygon points="92,150 104,150 100,92 96,92" fill="#2A2A2C"/>
+      <circle cx="98" cy="90" r="5" fill="#C49A3A"/>
+      <circle cx="402" cy="128" r="7" fill="#C49A3A"/>
+      <polygon points="96,312 102,312 100,286 98,286" fill="#2A2A2C"/>
+      <polygon points="398,312 404,312 402,286 400,286" fill="#2A2A2C"/>
+      <g font-family="PT Mono, monospace" font-size="12" fill="#26272A">
+        <text x="16" y="31">the far land curves up into the haze</text>
+        <text x="34" y="84">Tower Hill</text>
+        <text x="188" y="84">University</text>
+        <text x="342" y="84">Government Qtr</text>
+        <text x="350" y="152">the Center</text>
+        <text x="496" y="84">Barracks</text>
+        <text x="34" y="244">Docks</text>
+        <text x="188" y="244">Old Town</text>
+        <text x="188" y="262">café, safe flat</text>
+        <text x="342" y="244">Factories</text>
+        <text x="496" y="244">Rail Yards</text>
+        <text x="530" y="348">bridges cross the river</text>
+      </g>
+    </svg>
+    <figcaption>District layout. The big tower stands on Tower Hill; smaller relay towers stand in the Docks and the Factories. The Center that runs all the towers is hidden in the Government Quarter.</figcaption>
+  </figure>
+  <ul>
+    <li>Give every district <b>one landmark</b> the player can recognize at a glance: the big tower, the university dome, the palace, the barracks yard, cranes at the docks, the café square, chimneys, the train sheds.</li>
+    <li>Make the district borders visible: streets, walls, the river, changes in roofs. We'll trace them in the game so the player can click each district.</li>
+    <li><b>No text</b> on the map. The game adds names, so they can change later.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>The people</h2>
+  <p>13 portraits: 9 named characters and 4 ordinary recruits. The "based on" line names the book character, if you want to read for personality. Max is the odd one out: healthier, taller and calmer than anyone in this city.</p>
+  <p class="label">The underground (the player's side)</p>
+  <div class="cast">
+    <article class="card"><h3>Max</h3><span class="from">based on Maxim Kammerer</span><p>Early twenties, tall, strong, open face, short light hair. Wears a borrowed local coat that is too small for him. He looks too healthy for this place. The pulse doesn't affect him at all.</p></article>
+    <article class="card"><h3>Vep</h3><span class="from">based on Vepr</span><p>Leader of the underground. Middle-aged, thin, one arm, the empty sleeve pinned up. Short grey hair, calm, cold, clever eyes. Shabby long coat.</p></article>
+    <article class="card"><h3>Odri</h3><span class="from">based on Ordi Tader</span><p>Saboteur, mid-twenties. Sharp face, restless, a worker's cap and jacket. Small burn scars on her fingers from handling explosives.</p></article>
+    <article class="card"><h3>Zev</h3><span class="from">based on Zef</span><p>Forger and printer, in his forties. Big, wild red beard, messy hair, ink-stained hands, cracked glasses. A former scholar who laughs loudly at bad moments.</p></article>
+    <article class="card"><h3>Rada</h3><span class="from">based on Rada Gaal</span><p>Early twenties, works at a café in the Old Town. Kind, tired face, hair under a scarf, apron over a cardigan. Her brother serves in the Guard.</p></article>
+  </div>
+  <p class="label">The other side</p>
+  <div class="cast">
+    <article class="card"><h3>Kai</h3><span class="from">based on Gai Gaal</span><p>Rada's brother, about twenty, a young guardsman who truly believes. Neat olive uniform, black beret, polished gold badge.</p></article>
+    <article class="card"><h3>Captain Chako</h3><span class="from">based on Captain Chachu</span><p>The Guard officer who leads the raids. Thickset, scarred, loud. Greatcoat, officer's cap, gold badges.</p></article>
+    <article class="card"><h3>The Stranger</h3><span class="from">based on the Wanderer</span><p>Head of the secret police. Bald, tall, thin, dark round glasses, a plain dark suit. Calm and impossible to read. Keep part of his face in shadow.</p></article>
+    <article class="card"><h3>Kessel</h3><span class="from">new character</span><p>Leader of the rival underground group. In his fifties, a polished former officer: trim moustache, good coat with a fur collar, a signet ring, a charming smile that doesn't reach his eyes.</p></article>
+  </div>
+  <p class="label">Ordinary recruits</p>
+  <p>Four plain faces the player can recruit: a factory worker (man, cap), a student (young, glasses, scarf), a nurse (woman, plain white headscarf), a tram driver (older man, uniform cap, moustache).</p>
+</section>
+
+<section>
+  <h2>Story scenes</h2>
+  <p>These appear when something happens in the game, with a few lines of text and choices below. They are where your painting tells the story, so they can be the most atmospheric work.</p>
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>#</th><th>Scene</th><th>What we see</th><th></th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td><b>The pulse</b></td><td>A grey street. Everyone frozen, faces turned up toward a tower, blissful. One tall man, Max, looks around, confused.</td><td><span class="p1">P1</span></td></tr>
+        <tr><td class="n">2</td><td><b>Fallen in the street</b></td><td>Odri collapsed against a wall during the pulse, hands pressed to her head. A Guard patrol at the end of the street.</td><td><span class="p1">P1</span></td></tr>
+        <tr><td class="n">3</td><td><b>The cellar</b></td><td>The underground around a table with a city map, one bare bulb, brick walls. Vep standing, others listening.</td><td><span class="p1">P1</span></td></tr>
+        <tr><td class="n">4</td><td><b>The press</b></td><td>Zev cranking a hand printing press at night, leaflets piling up, ink everywhere.</td><td><span class="p1">P1</span></td></tr>
+        <tr><td class="n">5</td><td><b>The raid</b></td><td>Night. Guards breaking down a door, a searchlight cutting across wet walls.</td><td><span class="p1">P1</span></td></tr>
+        <tr><td class="n">6</td><td><b>The café</b></td><td>Rada's café from the street: the only warm light on a grey evening. A few people inside.</td><td><span class="p1">P1</span></td></tr>
+        <tr><td class="n">7</td><td><b>The brother</b></td><td>A small kitchen. Kai in uniform at the table, Rada and Max across from him, an awkward silence.</td><td><span class="p2">P2</span></td></tr>
+        <tr><td class="n">8</td><td><b>The interrogation</b></td><td>The Stranger behind a desk, a lamp between him and a prisoner. His face half in shadow.</td><td><span class="p2">P2</span></td></tr>
+        <tr><td class="n">9</td><td><b>The offer</b></td><td>Kessel's group meeting in an abandoned theater, dust sheets on the seats. Kessel offering his hand.</td><td><span class="p2">P2</span></td></tr>
+        <tr><td class="n">10</td><td><b>Sabotage</b></td><td>The foot of a relay tower at night, fence cut, two figures placing a charge, the tower rising into darkness.</td><td><span class="p2">P2</span></td></tr>
+        <tr><td class="n">11</td><td><b>The district wakes</b></td><td>A tower down. People in the street blinking, confused, as if waking from a dream.</td><td><span class="p2">P2</span></td></tr>
+        <tr><td class="n">12</td><td><b>Taken</b></td><td>An agent pushed into a black van at dawn. Neighbors watching from behind curtains.</td><td><span class="p2">P2</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Please don't paint readable words into scenes, such as poster slogans or shop signs. Shapes of letters or blank posters are fine; the game adds English text where needed.</p>
+</section>
+
+<section>
+  <h2>Icons</h2>
+  <p>Small pictures for money, actions and map markers. Ink on white paper, one in each 5 × 5 cm square. They'll appear about as big as a fingernail on screen, so: thick lines, simple shapes, no fine detail.</p>
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>Group</th><th>Icons</th></tr></thead>
+      <tbody>
+        <tr><td><b>Supplies</b></td><td>Money (coins or banknotes), people, paper and ink, explosives, forged papers</td></tr>
+        <tr><td><b>Actions</b></td><td>Recruit (handshake), leaflets, scout (binoculars or an eye), sabotage (pliers or a fuse), open a business (a shop awning)</td></tr>
+        <tr><td><b>Map markers</b></td><td>Safe house, front business, police patrol, informant, relay tower</td></tr>
+        <tr><td><b>The Fathers' emblem</b></td><td>Invent it: something built from a tower and a ring of light. It appears on badges, posters and official papers.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Order of work</h2>
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>When</th><th>What</th></tr></thead>
+      <tbody>
+        <tr><td><span class="p0">TEST</span></td><td>Max's portrait, a pencil sketch of the city layout, three icons (money, safe house, tower).</td></tr>
+        <tr><td><span class="p1">P1</span></td><td>The painted city map; portraits of Max, Vep, Odri, Zev, Rada, the Stranger and Kessel; scenes 1–6; all icons and the emblem.</td></tr>
+        <tr><td><span class="p2">P2</span></td><td>Portraits of Kai, Chako and the 4 recruits; scenes 7–12; later, a title picture and endings.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Sending your work</h2>
+  <p class="label">Best: a scanner</p>
+  <ul>
+    <li>Scan in color at <b>600 dpi</b>, with automatic "enhance" or "fix colors" turned off.</li>
+    <li>The map is A3, too big for most home scanners. A copy shop can scan A3 cheaply. Otherwise, photograph it.</li>
+  </ul>
+  <p class="label">Fine: a phone photo</p>
+  <ul>
+    <li>Daylight from a window, but not direct sun. No flash.</li>
+    <li>Paper lying flat. Not under glass or plastic, which reflects.</li>
+    <li>Hold the phone straight above the paper, parallel to it, so the frame isn't skewed. Watch that the phone's shadow doesn't fall on the painting.</li>
+    <li>Fill the photo with the painting, edges included.</li>
+  </ul>
+  <div class="dont">
+    <span class="label">How to send</span>
+    <p>Send the <b>original files</b> by email, Google Drive or Telegram "as a file". WhatsApp, Viber and normal Telegram photos shrink and blur the image. We do all the cleanup after that: cropping, color, removing the paper background from icons.</p>
+  </div>
+</section>
+
+<section>
+  <h2>References</h2>
+  <p>Search terms for a mood board. Take the feeling, not the designs.</p>
+  <div class="tablebox">
+    <table>
+      <thead><tr><th>For</th><th>Look up</th><th>Take from it</th></tr></thead>
+      <tbody>
+        <tr><td>The map</td><td>Turgot map of Paris (1739); Matthäus Merian city views; old bird's-eye city maps</td><td>A whole city painted from above at an angle, every roof visible</td></tr>
+        <tr><td>Towers</td><td>Shukhov Tower (Shabolovka, Moscow); Shukhov towers on the Oka river</td><td>Steel lattice with a narrow waist, dominating the skyline</td></tr>
+        <tr><td>Glowing sky</td><td>Arkhip Kuindzhi; photos of fog and white overcast</td><td>Light that seems to come from the sky itself</td></tr>
+        <tr><td>Grey mood</td><td>This War of Mine art; Jakub Różalski's "1920+" paintings; Simon Stålenhag</td><td>Heavy grey atmosphere; big machines in ordinary, muddy places</td></tr>
+        <tr><td>The city</td><td>Post-war Warsaw and Berlin photos (1945–1955); Stalinist apartment blocks; Tbilisi courtyards; 1940s trams</td><td>Courtyards, damp walls, rubble, crowds in coats</td></tr>
+        <tr><td>Faces</td><td>Käthe Kollwitz; Aleksandr Deyneka</td><td>Kollwitz for fear and pain; Deyneka for the blissful upturned faces of the pulse</td></tr>
+        <tr><td>Clothing</td><td>1940s workwear; wartime greatcoats and berets; 1940s women's coats and headscarves</td><td>Silhouettes and fabrics. Invent our own badges; no real flags or symbols.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="avoid">
+    <span class="label">Please avoid</span>
+    <p>The 2008–2009 film, published covers and illustrations of the book, and earlier games based on it. We want a world that is clearly our own.</p>
+  </div>
+</section>
+
+<section>
+  <h2>How we work together</h2>
+  <ol class="steps">
+    <li><p><b>Test set first:</b> Max's portrait, the pencil layout and three icons.</p></li>
+    <li><p><b>We put them into the game</b> and send you a screenshot, so you see your work on screen at its real size.</p></li>
+    <li><p><b>We agree on any changes once,</b> then you continue with P1, then P2.</p></li>
+    <li><p><b>Send pieces as you finish them.</b> Each goes into the game as it arrives.</p></li>
+  </ol>
+</section>
+
+</div>
+</main>

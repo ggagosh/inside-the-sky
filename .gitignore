@@ -1,0 +1,11 @@
+# Godot cache and builds
+game/.godot/
+builds/
+
+# Raw art scans live outside git (see docs/art/README.md)
+art-raw/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/

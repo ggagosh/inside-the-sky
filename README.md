@@ -8,9 +8,11 @@ Built with Godot 4.7 and GDScript. The project is **AI-native**: humans decide w
 
 ## Quick start
 
-1. Install [mise](https://mise.jdx.dev/getting-started.html).
-2. In the repo folder, run `mise install`. It installs the pinned Godot, uv and gdtoolkit versions.
-3. Then:
+1. Ask ggagosh to add you to the GitHub repo, then `gh repo clone ggagosh/inside-the-sky`.
+2. Install [mise](https://mise.jdx.dev/getting-started.html).
+3. In the repo folder, run `mise install`. It installs the pinned Godot, uv and gdtoolkit versions.
+4. Check that `mise run check` passes. On Linux, if `godot` isn't found, see the note in `.github/workflows/ci.yml`; it's a known mise issue with one-line fix.
+5. Then:
 
 | Command | What it does |
 |---|---|

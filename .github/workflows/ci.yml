@@ -11,4 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: jdx/mise-action@v2
+      # ponytail: mise's aqua backend looks for "Godot_vv..." on Linux and never links `godot`.
+      # Link the real binary ourselves; drop this step once mise fixes it.
+      - run: sudo ln -s "$(mise where godot)"/Godot_v*_linux.x86_64 /usr/local/bin/godot
       - run: mise run check

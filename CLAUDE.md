@@ -24,5 +24,6 @@ Turn-based strategy game for PC, Godot 4.7, GDScript, English text. The player l
 - **Every rule gets a test.** System docs number their rules (R1, R2...); name tests after them (`test_r2_...`). A bug fix starts with a failing test.
 - **Tuning numbers live in `game/data/`**, not scattered as constants in code.
 - **Names:** never use the novel's original names in game text, code or assets (Maxim, Gai, Saraksh, Unknown Fathers, etc.). Use `docs/game/glossary.md`.
-- **Don't touch** `game/.godot/` (generated). Don't commit raw art scans. Don't edit `docs/art/painter-brief.html` without being asked; it's shared with the painter.
+- **Don't touch** `game/.godot/` (generated). Don't commit raw art scans. Change `docs/art/painter-brief.html` only when asked; it's the painter's working brief and is also published as a shared page.
+- **Two humans work here** (see `docs/dev/workflow.md`). Work on a branch, never on `main`, and don't rewrite or force-push someone else's branch.
 - Commit, push or open PRs only when the user asks.

@@ -4,6 +4,15 @@ Status: agreed · Owner: ggagosh · Updated: 2026-11-02
 
 How humans and AI agents build this game together.
 
+## Team
+
+| Who | Leads on | Also does |
+|---|---|---|
+| ggagosh | Design, code, project direction | Writing, playtesting, art direction |
+| Painter (name TBD) | All art: painting, scanning, cleanup, importing | Code and design like everyone else |
+
+Each of us reviews the other's pull requests. Art goes through pull requests too, so the other person sees it in the game before it's merged.
+
 ## Who does what
 
 | Humans | Agents |

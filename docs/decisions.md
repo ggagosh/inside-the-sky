@@ -4,6 +4,11 @@ Status: agreed · Owner: ggagosh · Updated: 2026-11-02
 
 Newest at the top. Each entry says what we decided, why, and what we chose against. To change a decision, add a new entry that points to the old one; don't edit history.
 
+### 2026-11-02 · Raw scans live in git, converted by a script
+**Decision:** original scans and photos go in `art/raw/` as JPEGs at 300 dpi. `mise run art` (`tools/art.py`, OpenCV) converts them into game assets. This replaces "No Git LFS yet" below, which kept raw scans outside git.
+**Why:** an A4 scan at 300 dpi is about 2–4 MB, and the whole MVP is roughly 100 MB, which plain git handles fine. Keeping originals next to the exports means anyone can redo a conversion, and the painter needs nothing but git.
+**Instead of:** a shared drive outside git; Git LFS (unnecessary at this size); cleaning up each scan by hand in an image editor.
+
 ### 2026-11-02 · Simulation separate from UI
 **Decision:** game rules, state and AI live in `game/core/` with no Nodes; the UI only reads state and sends commands.
 **Why:** headless tests, AI-vs-AI balance simulations, and simple save/load.

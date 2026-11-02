@@ -1,0 +1,11 @@
+# Extra instructions for `mise run art`, one section per file in art/raw/.
+# Most files need nothing here. Two cases do:
+#
+# 1. Icon sheets: name the icons left-to-right, top-to-bottom.
+#    ["icons/sheet-1.jpg"]
+#    names = ["money", "safe_house", "tower"]
+#
+# 2. A wrong crop (check art/.preview/): give the corners of the painted area yourself,
+#    in pixels of the raw file, any order. An agent can read them off the image for you.
+#    ["portraits/max.jpg"]
+#    corners = [[412, 377], [2618, 452], [2701, 3619], [349, 3561]]

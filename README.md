@@ -20,12 +20,15 @@ Built with Godot 4.7 and GDScript. The project is **AI-native**: humans decide w
 | `mise run play` | Run the game |
 | `mise run check` | Lint and tests, the same as CI |
 | `mise run fmt` | Format all GDScript |
+| `mise run art` | Turn scanned paintings in `art/raw/` into game assets |
 
 ## Repo layout
 
 ```
 CLAUDE.md          instructions for AI agents (AGENTS.md points here)
 mise.toml          pinned tools and project commands
+art/raw/           original scans and photos of the paintings, by kind
+tools/art.py       converts art/raw/ into game assets
 docs/
   README.md        how docs are organized and written
   decisions.md     log of decisions and why

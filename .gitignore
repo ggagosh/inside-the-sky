@@ -2,8 +2,8 @@
 game/.godot/
 builds/
 
-# Raw art scans live outside git (see docs/art/README.md)
-art-raw/
+# Crop previews from `mise run art`
+art/.preview/
 
 # OS / editors
 .DS_Store

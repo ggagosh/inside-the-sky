@@ -28,6 +28,14 @@ run = ["gdformat --check game", "gdlint game"]
 description = "Format all GDScript"
 run = "gdformat game"
 
+[tasks.art]
+description = "Convert paintings in art/raw/ into game assets (pass file paths to convert only those)"
+run = "uv run --script tools/art.py"
+
+[tasks.test-art]
+description = "Check the art converter on generated images"
+run = "uv run --script tools/art.py --self-test"
+
 [tasks.check]
-description = "Everything CI runs: lint + test"
-depends = ["lint", "test"]
+description = "Everything CI runs: lint + tests"
+depends = ["lint", "test", "test-art"]
